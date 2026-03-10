@@ -22,54 +22,82 @@
 
     .header-container {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
     }
 
     h1 {
       color: #1e3a8a;
       margin: 0;
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 700;
       letter-spacing: -0.5px;
     }
 
     h2 {
-      color: #60a5fa;
+      color: #3b82f6;
       margin-top: 5px;
       font-weight: 600;
-      font-size: 16px;
+      font-size: 15px;
       text-transform: uppercase;
       letter-spacing: 1px;
     }
 
     .calculator-card {
       background: #ffffff;
-      padding: 35px;
+      padding: 30px;
       border-radius: 20px;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
       width: 100%;
-      max-width: 420px;
+      max-width: 480px;
       box-sizing: border-box;
     }
 
+    .section-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #64748b;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+      letter-spacing: 0.5px;
+      border-bottom: 2px solid #f1f5f9;
+      padding-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .badge-bobot {
+      background-color: #dbeafe;
+      color: #1d4ed8;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 11px;
+    }
+
     .form-group {
-      margin-bottom: 25px;
+      margin-bottom: 15px;
+    }
+
+    .input-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-bottom: 20px;
     }
 
     label {
       font-weight: 600;
       color: #4b5563;
       display: block;
-      margin-bottom: 10px;
-      font-size: 14px;
+      margin-bottom: 6px;
+      font-size: 13px;
     }
 
     input[type="number"] {
       width: 100%;
-      padding: 15px;
+      padding: 12px;
       border: 2px solid #e5e7eb;
-      border-radius: 12px;
-      font-size: 18px;
+      border-radius: 10px;
+      font-size: 15px;
       box-sizing: border-box;
       outline: none;
       transition: all 0.3s ease;
@@ -84,14 +112,15 @@
     .button-group {
       display: flex;
       gap: 10px;
+      margin-top: 25px;
     }
 
     .btn {
       flex: 1;
-      padding: 15px;
+      padding: 14px;
       border: none;
       border-radius: 12px;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s ease;
@@ -120,8 +149,8 @@
     }
 
     .result-box {
-      margin-top: 30px;
-      padding: 25px;
+      margin-top: 25px;
+      padding: 20px;
       border-radius: 16px;
       background-color: #f8fafc;
       display: none;
@@ -156,14 +185,14 @@
     .result-details {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
     }
 
     .result-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 15px;
+      font-size: 13px;
       color: #64748b;
       padding-bottom: 8px;
       border-bottom: 1px dashed #cbd5e1;
@@ -176,7 +205,12 @@
 
     .result-value {
       font-weight: 700;
+      font-size: 14px;
+    }
+
+    .highlight-text {
       font-size: 16px;
+      color: #0f172a;
     }
 
     .status-lulus { color: #059669; }
@@ -186,9 +220,9 @@
     .bg-gagal { background: linear-gradient(135deg, #ef4444, #dc2626); }
 
     .footer {
-      margin-top: 40px;
+      margin-top: 30px;
       color: #9ca3af;
-      font-size: 14px;
+      font-size: 13px;
       text-align: center;
     }
   </style>
@@ -196,18 +230,46 @@
 <body>
 
   <div class="header-container">
-    <h1>Kalkulator Munaqosyah</h1>
-    <h2>FEBI UINSI Samarinda</h2>
+    <h1>Kalkulator Rekap Nilai Akhir</h1>
+    <h2>Munaqosyah FEBI UINSI</h2>
   </div>
   
   <div class="calculator-card">
+    
+    <div class="section-title">
+      <span>Tahap 1: Pra-Munaqosyah</span>
+      <span class="badge-bobot">Bobot 25%</span>
+    </div>
     <div class="form-group">
-      <label for="inputNilai">Masukkan Nilai Akhir (0 - 100)</label>
-      <input type="number" id="inputNilai" placeholder="Contoh: 85.5" step="0.01" min="0" max="100">
+      <label for="nilaiSemhas">Nilai Seminar Hasil</label>
+      <input type="number" id="nilaiSemhas" placeholder="0 - 100" step="0.01" min="0" max="100">
+    </div>
+
+    <div class="section-title" style="margin-top: 25px;">
+      <span>Tahap 2: Sidang Munaqosyah</span>
+      <span class="badge-bobot">Bobot 75%</span>
+    </div>
+    <div class="input-grid">
+      <div class="form-group">
+        <label for="nilaiKetua">Ketua Tim</label>
+        <input type="number" id="nilaiKetua" placeholder="Nilai" step="0.01" min="0" max="100">
+      </div>
+      <div class="form-group">
+        <label for="nilaiUtama">Penguji Utama</label>
+        <input type="number" id="nilaiUtama" placeholder="Nilai" step="0.01" min="0" max="100">
+      </div>
+      <div class="form-group">
+        <label for="nilaiP1">Penguji 1</label>
+        <input type="number" id="nilaiP1" placeholder="Nilai" step="0.01" min="0" max="100">
+      </div>
+      <div class="form-group">
+        <label for="nilaiP2">Penguji 2</label>
+        <input type="number" id="nilaiP2" placeholder="Nilai" step="0.01" min="0" max="100">
+      </div>
     </div>
     
     <div class="button-group">
-      <button class="btn btn-primary" onclick="hitungKonversi()">Hitung Hasil</button>
+      <button class="btn btn-primary" onclick="hitungFinal()">Hitung Nilai Akhir</button>
       <button class="btn btn-secondary" onclick="resetForm()">Reset</button>
     </div>
 
@@ -218,11 +280,19 @@
       
       <div class="result-details">
         <div class="result-item">
-          <span>Bobot Angka</span> 
-          <span class="result-value" id="outAngka" style="color: #0f172a;">-</span>
+          <span>Rata-rata Sidang (Skala 100)</span> 
+          <span class="result-value" id="outRataSidang">-</span>
         </div>
         <div class="result-item">
-          <span>Status</span> 
+          <span>Nilai Akhir Total (Skala 100)</span> 
+          <span class="result-value highlight-text" id="outNilaiAkhir">-</span>
+        </div>
+        <div class="result-item">
+          <span>Bobot Angka (Skala 4.00)</span> 
+          <span class="result-value highlight-text" id="outAngka">-</span>
+        </div>
+        <div class="result-item">
+          <span>Status Kelulusan</span> 
           <span class="result-value" id="outKategori">-</span>
         </div>
       </div>
@@ -230,70 +300,98 @@
   </div>
 
   <div class="footer">
-    &copy; 2026 FEBI UINSI
+    &copy; 2026 FEBI UINSI Samarinda
   </div>
 
   <script>
-    // Fitur agar bisa menekan "Enter" pada keyboard
-    document.getElementById("inputNilai").addEventListener("keypress", function(event) {
-      if (event.key === "Enter") {
-        event.preventDefault();
-        hitungKonversi();
-      }
-    });
-
-    function hitungKonversi() {
-      const inputVal = document.getElementById('inputNilai').value;
-      const hasilBox = document.getElementById('hasilBox');
-      const badgeHuruf = document.getElementById('badgeHuruf');
-      const elKategori = document.getElementById('outKategori');
+    function hitungFinal() {
+      // 1. Ambil nilai Seminar Hasil
+      const semhasStr = document.getElementById('nilaiSemhas').value;
       
-      if(inputVal === '') {
-        alert('Mohon masukkan nilai terlebih dahulu!');
-        document.getElementById('inputNilai').focus();
+      // 2. Ambil nilai para Penguji Munaqosyah
+      const ketuaStr = document.getElementById('nilaiKetua').value;
+      const utamaStr = document.getElementById('nilaiUtama').value;
+      const p1Str = document.getElementById('nilaiP1').value;
+      const p2Str = document.getElementById('nilaiP2').value;
+
+      // Validasi Seminar Hasil wajib diisi
+      if(semhasStr === '') {
+        alert('Mohon masukkan Nilai Seminar Hasil terlebih dahulu!');
+        document.getElementById('nilaiSemhas').focus();
         return;
       }
 
-      const nilai = parseFloat(inputVal);
+      // Validasi rentang nilai (0-100)
+      const validasiRentang = (val) => val >= 0 && val <= 100;
       
-      if (nilai < 0 || nilai > 100) {
-        alert('Nilai tidak valid! Masukkan angka antara 0 hingga 100.');
-        document.getElementById('inputNilai').value = '';
-        document.getElementById('inputNilai').focus();
+      const semhas = parseFloat(semhasStr);
+      if(!validasiRentang(semhas)) {
+        alert('Nilai Seminar Hasil tidak valid (harus 0 - 100).');
         return;
       }
 
-      let huruf = '';
-      let angka = '';
-      let kategori = '';
+      // Kumpulkan nilai penguji yang diisi ke dalam array
+      let pengujiScores = [];
+      if(ketuaStr !== '') pengujiScores.push(parseFloat(ketuaStr));
+      if(utamaStr !== '') pengujiScores.push(parseFloat(utamaStr));
+      if(p1Str !== '') pengujiScores.push(parseFloat(p1Str));
+      if(p2Str !== '') pengujiScores.push(parseFloat(p2Str));
 
-      // Logika Penilaian
-      if (nilai >= 90 && nilai <= 100) {
+      // Harus ada minimal 1 nilai penguji
+      if(pengujiScores.length === 0) {
+        alert('Mohon masukkan minimal satu nilai dari Dewan Penguji!');
+        return;
+      }
+
+      // Hitung Rata-rata Munaqosyah
+      let totalPenguji = 0;
+      for (let i = 0; i < pengujiScores.length; i++) {
+        if(!validasiRentang(pengujiScores[i])) {
+          alert('Ada nilai Dewan Penguji yang tidak valid (harus 0 - 100).');
+          return;
+        }
+        totalPenguji += pengujiScores[i];
+      }
+      
+      const rataRataMunaqosyah = totalPenguji / pengujiScores.length;
+
+      // HITUNG NILAI AKHIR (25% Semhas + 75% Rata-rata Munaqosyah)
+      const nilaiAkhir = (semhas * 0.25) + (rataRataMunaqosyah * 0.75);
+
+      // Konversi berdasarkan Tabel FEBI (dengan perbaikan)
+      let huruf = '', angka = '', kategori = '';
+
+      if (nilaiAkhir >= 90 && nilaiAkhir <= 100) {
         huruf = 'A'; angka = '4.00'; kategori = 'Lulus';
-      } else if (nilai >= 86 && nilai < 90) {
+      } else if (nilaiAkhir >= 86 && nilaiAkhir < 90) {
         huruf = 'A-'; angka = '3.75'; kategori = 'Lulus';
-      } else if (nilai >= 80 && nilai < 86) {
+      } else if (nilaiAkhir >= 80 && nilaiAkhir < 86) {
         huruf = 'B+'; angka = '3.50'; kategori = 'Lulus';
-      } else if (nilai >= 76 && nilai < 80) {
+      } else if (nilaiAkhir >= 76 && nilaiAkhir < 80) {
         huruf = 'B'; angka = '3.00'; kategori = 'Lulus';
-      } else if (nilai >= 70 && nilai < 76) {
+      } else if (nilaiAkhir >= 70 && nilaiAkhir < 76) {
         huruf = 'B-'; angka = '2.75'; kategori = 'Lulus';
-      } else if (nilai >= 66 && nilai < 70) {
+      } else if (nilaiAkhir >= 66 && nilaiAkhir < 70) {
         huruf = 'C+'; angka = '2.50'; kategori = 'Lulus';
-      } else if (nilai >= 60 && nilai < 66) {
+      } else if (nilaiAkhir >= 60 && nilaiAkhir < 66) {
         huruf = 'C'; angka = '2.00'; kategori = 'Lulus';
-      } else if (nilai >= 50 && nilai < 60) {
+      } else if (nilaiAkhir >= 50 && nilaiAkhir < 60) {
         huruf = 'D'; angka = '1.00'; kategori = 'Tidak Lulus';
-      } else if (nilai >= 0 && nilai < 50) {
+      } else if (nilaiAkhir >= 0 && nilaiAkhir < 50) {
         huruf = 'E'; angka = '0.00'; kategori = 'Tidak Lulus';
       }
 
-      // Update Teks
-      badgeHuruf.innerText = huruf;
+      // Update Tampilan Hasil
+      document.getElementById('outRataSidang').innerText = rataRataMunaqosyah.toFixed(2);
+      document.getElementById('outNilaiAkhir').innerText = nilaiAkhir.toFixed(2);
       document.getElementById('outAngka').innerText = angka;
+      
+      const badgeHuruf = document.getElementById('badgeHuruf');
+      const elKategori = document.getElementById('outKategori');
+      
+      badgeHuruf.innerText = huruf;
       elKategori.innerText = kategori;
       
-      // Update Warna Badge dan Teks Status
       if(kategori === 'Lulus') {
         badgeHuruf.className = 'grade-badge bg-lulus';
         elKategori.className = 'result-value status-lulus';
@@ -302,14 +400,14 @@
         elKategori.className = 'result-value status-gagal';
       }
 
-      // Tampilkan hasil
-      hasilBox.style.display = 'block';
+      document.getElementById('hasilBox').style.display = 'block';
     }
 
     function resetForm() {
-      document.getElementById('inputNilai').value = '';
+      const inputs = document.querySelectorAll('input[type="number"]');
+      inputs.forEach(input => input.value = '');
       document.getElementById('hasilBox').style.display = 'none';
-      document.getElementById('inputNilai').focus();
+      document.getElementById('nilaiSemhas').focus();
     }
   </script>
 </body>
