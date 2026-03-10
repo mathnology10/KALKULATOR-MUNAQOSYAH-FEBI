@@ -284,6 +284,14 @@
           <span class="result-value" id="outRataSidang">-</span>
         </div>
         <div class="result-item">
+          <span>Bobot Semhas (25%)</span> 
+          <span class="result-value" id="outBobotSemhas">-</span>
+        </div>
+        <div class="result-item">
+          <span>Bobot Sidang (75%)</span> 
+          <span class="result-value" id="outBobotSidang">-</span>
+        </div>
+        <div class="result-item" style="border-top: 2px solid #e2e8f0; padding-top: 8px;">
           <span>Nilai Akhir Total (Skala 100)</span> 
           <span class="result-value highlight-text" id="outNilaiAkhir">-</span>
         </div>
@@ -355,8 +363,12 @@
       
       const rataRataMunaqosyah = totalPenguji / pengujiScores.length;
 
-      // HITUNG NILAI AKHIR (25% Semhas + 75% Rata-rata Munaqosyah)
-      const nilaiAkhir = (semhas * 0.25) + (rataRataMunaqosyah * 0.75);
+      // HITUNG BOBOT 25% DAN 75%
+      const bobotSemhas = semhas * 0.25;
+      const bobotSidang = rataRataMunaqosyah * 0.75;
+
+      // HITUNG NILAI AKHIR (Total dari Bobot)
+      const nilaiAkhir = bobotSemhas + bobotSidang;
 
       // Konversi berdasarkan Tabel FEBI (dengan perbaikan)
       let huruf = '', angka = '', kategori = '';
@@ -381,8 +393,12 @@
         huruf = 'E'; angka = '0.00'; kategori = 'Tidak Lulus';
       }
 
-      // Update Tampilan Hasil
+      // Update Tampilan Hasil Rincian Bobot
       document.getElementById('outRataSidang').innerText = rataRataMunaqosyah.toFixed(2);
+      document.getElementById('outBobotSemhas').innerText = bobotSemhas.toFixed(2);
+      document.getElementById('outBobotSidang').innerText = bobotSidang.toFixed(2);
+      
+      // Update Nilai Akhir & Konversi
       document.getElementById('outNilaiAkhir').innerText = nilaiAkhir.toFixed(2);
       document.getElementById('outAngka').innerText = angka;
       
